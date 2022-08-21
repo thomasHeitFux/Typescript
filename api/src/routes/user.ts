@@ -10,7 +10,7 @@ router.get('/', (req: Request, res: Response, next: NextFunction) => {
 		.catch((error) => next(error));
 });
 
-router.post('/', (req: Request, res: Response, next: NextFunction) => {
+router.post('/create', (req: Request, res: Response, next: NextFunction) => {
 	const user = req.body;
 	User.create(user)
 		.then((createdUser) => {

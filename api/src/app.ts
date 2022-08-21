@@ -7,6 +7,7 @@ import routes from './routes/index';
 //-----------------------------------
 const app: Application = express();
 
+
 interface error {
 	status: number;
 	message: string;
@@ -16,7 +17,7 @@ app.use(express.urlencoded({extended: true, limit: '50mb'})); //middleware
 app.use(express.json({limit: '50mb'}));
 app.use(cookieParser());
 app.use(morgan('dev'));
-app.use('/api', routes);
+app.use('/', routes);
 app.use(
 	cors({
 		origin: config.cors,
@@ -33,8 +34,5 @@ app.use((err: error, req: Request, res: Response, next: NextFunction) => {
 	console.error(err);
 	res.status(status).send(message);
 });
-// app.get('/', (req: Request, res: Response) => {
-// 	res.send('hola typescript!');
-// });
-// export default app;
+
 export default app;
