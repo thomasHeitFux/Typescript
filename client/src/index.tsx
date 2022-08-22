@@ -1,17 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {App} from './components/App'
+import { Provider } from 'react-redux';
+import App  from './components/App'
+import { store } from './store';
 
-interface AppProps {
-  title: string;
-}
-
-function Index() {
-
-  return <div>
-    <App title={'front'}/>
-  </div>;
-}
+// interface AppProps {
+//   title: string;
+// }
 
 
-ReactDOM.render(<Index/>, document.querySelector('#root'));
+ReactDOM.render(
+  <Provider store={store}>
+    <h1>Henry</h1>
+    <App  />
+  </Provider>
+  , document.querySelector('#root'));

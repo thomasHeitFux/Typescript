@@ -20,12 +20,19 @@ app.use(morgan('dev'));
 app.use('/', routes);
 app.use(
 	cors({
-		origin: config.cors,
-		credentials: true,
-		methods: ['GET', 'POST', 'OPTIONS', 'PUT', 'DELETE'],
-		allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept'],
+	  origin: "http://localhost:3000",
+	  credentials: true,
+	  methods: ["GET", "POST", "OPTIONS", "PUT", "DELETE"],
+	  allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept"],
 	})
-);
+  );
+// app.use((req: Request, res: Response,  next: NextFunction) => {
+// 	res.header('Access-Control-Allow-Origin', '*'); 
+// 	res.header('Access-Control-Allow-Credentials', 'true');
+// 	res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+// 	res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+// 	next();
+//   });
 
 app.use((err: error, req: Request, res: Response, next: NextFunction) => {
 	// eslint-disable-line no-unused-vars
